@@ -4,7 +4,7 @@
 
 ## 🌟 Live Demo
 
-Visit the presentation: [https://yourusername.github.io/presentation](https://yourusername.github.io/presentation)
+Visit the presentation:https://github.com/jabelopitso/VoiceBank-Africa', '_blank')))
 
 ## 📋 Overview
 
