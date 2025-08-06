@@ -1,0 +1,53 @@
+# GitHub Pages Configuration for VoiceBank Africa Presentation
+
+title: "VoiceBank Africa - Hackathon Presentation"
+description: "Bank with your voice. Anytime. Anywhere. A revolutionary voice-first banking platform for Africa."
+url: "https://yourusername.github.io"
+baseurl: "/presentation"
+
+# SEO and Social Media
+author: "VoiceBank Africa Team"
+twitter:
+  username: voicebankAfrica
+  card: summary_large_image
+
+# GitHub Pages settings
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Exclude files from processing
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .sass-cache
+  - .jekyll-cache
+
+# Include files
+include:
+  - _redirects
+
+# Markdown settings
+markdown: kramdown
+highlighter: rouge
+
+# Sass settings
+sass:
+  style: compressed
+  sass_dir: _sass
+
+# Collections
+collections:
+  sections:
+    output: false
+
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+      image: /assets/images/og-image.png

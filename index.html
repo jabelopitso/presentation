@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoiceBank Africa - Presentation</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="VoiceBank Africa: Revolutionary voice-first banking platform breaking barriers across Africa.">
+    <meta name="keywords" content="voice banking, Africa, financial inclusion, mobile banking, local languages, fintech, hackathon">
+    <meta name="author" content="VoiceBank Africa Team">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Slide Navigation -->
+    <div class="slide-navigation">
+        <div class="nav-left">
+            <div class="logo">
+                <svg class="african-logo" viewBox="0 0 100 100" width="40" height="40">
+                    <!-- African continent with microphone -->
+                    <path d="M50 10 C65 10, 80 25, 80 40 C80 55, 75 70, 65 80 C55 90, 45 90, 35 80 C25 70, 20 55, 20 40 C20 25, 35 10, 50 10 Z" fill="#FFD700" stroke="#000" stroke-width="2"/>
+                    <circle cx="50" cy="45" r="8" fill="#000"/>
+                    <rect x="47" y="53" width="6" height="15" fill="#000"/>
+                    <ellipse cx="50" cy="70" rx="12" ry="3" fill="#000"/>
+                </svg>
+                <span>VoiceBank Africa</span>
+            </div>
+        </div>
+        <div class="nav-center">
+            <div class="slide-counter">
+                <span id="currentSlide">1</span> / <span id="totalSlides">10</span>
+            </div>
+        </div>
+        <div class="nav-right">
+            <button class="nav-btn" id="prevBtn" onclick="previousSlide()">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="nav-btn" id="nextBtn" onclick="nextSlide()">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <button class="nav-btn" onclick="toggleFullscreen()">
+                <i class="fas fa-expand"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Slide Container -->
+    <div class="slide-container" id="slideContainer">
+
+        <!-- Slide 1: Title Slide -->
+        <div class="slide active" data-slide="1">
+            <div class="slide-content title-slide">
+                <div class="title-logo">
+                    <svg class="african-logo-large" viewBox="0 0 200 200" width="120" height="120">
+                        <defs>
+                            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#FFA500;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Stylized African continent -->
+                        <path d="M100 20 C130 20, 160 50, 160 80 C160 110, 150 140, 130 160 C110 180, 90 180, 70 160 C50 140, 40 110, 40 80 C40 50, 70 20, 100 20 Z" fill="url(#logoGradient)" stroke="#000" stroke-width="3"/>
+                        <!-- Microphone in center -->
+                        <circle cx="100" cy="90" r="15" fill="#000"/>
+                        <rect x="95" y="105" width="10" height="25" fill="#000"/>
+                        <ellipse cx="100" cy="135" rx="20" ry="5" fill="#000"/>
+                        <!-- Sound waves -->
+                        <path d="M130 70 Q140 80, 130 90" stroke="#FFD700" stroke-width="3" fill="none"/>
+                        <path d="M135 65 Q150 80, 135 95" stroke="#FFD700" stroke-width="3" fill="none"/>
+                        <path d="M70 70 Q60 80, 70 90" stroke="#FFD700" stroke-width="3" fill="none"/>
+                        <path d="M65 65 Q50 80, 65 95" stroke="#FFD700" stroke-width="3" fill="none"/>
+                    </svg>
+                </div>
+                <h1 class="slide-title">VoiceBank Africa</h1>
+                <p class="slide-tagline">Bank with your voice. Anytime. Anywhere.</p>
+                <div class="slide-meta">
+                    <p class="hackathon-info">WeThinkCode Hackathon 2024</p>
+                    <p class="team-info">Team: Paballo • Tumi • Jabelo • Kutloano</p>
+                    <p class="date-info">August 8 - October 11, 2024</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: The Problem -->
+        <div class="slide" data-slide="2">
+            <div class="slide-content">
+                <h2 class="slide-heading">The Challenge We Face</h2>
+                <div class="problem-layout">
+                    <div class="problem-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">66%</div>
+                            <div class="stat-label">Unbanked Adults in Sub-Saharan Africa</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">2000+</div>
+                            <div class="stat-label">Languages Spoken Across Africa</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">38%</div>
+                            <div class="stat-label">Adult Literacy Rate in Some Regions</div>
+                        </div>
+                    </div>
+                    <div class="problem-visual">
+                        <div class="africa-outline">
+                            <i class="fas fa-globe-africa"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="problem-points">
+                    <div class="point-item">
+                        <i class="fas fa-ban"></i>
+                        <span>Digital & Financial Exclusion</span>
+                    </div>
+                    <div class="point-item">
+                        <i class="fas fa-language"></i>
+                        <span>Literacy & Language Barriers</span>
+                    </div>
+                    <div class="point-item">
+                        <i class="fas fa-wifi-slash"></i>
+                        <span>Lack of Accessible Banking Tools</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: The Solution -->
+        <div class="slide" data-slide="3">
+            <div class="slide-content">
+                <h2 class="slide-heading">Our Solution</h2>
+                <div class="solution-grid">
+                    <div class="solution-feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-microphone-alt"></i>
+                        </div>
+                        <h3>Voice-Activated Banking</h3>
+                        <p>Speak naturally to perform banking operations</p>
+                    </div>
+                    <div class="solution-feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-globe-africa"></i>
+                        </div>
+                        <h3>Local Language Support</h3>
+                        <p>Available in 11 official South African languages</p>
+                    </div>
+                    <div class="solution-feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-wifi-slash"></i>
+                        </div>
+                        <h3>Offline Functionality</h3>
+                        <p>Core features work without internet</p>
+                    </div>
+                    <div class="solution-feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Secure Transactions</h3>
+                        <p>Voice biometrics and encryption</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- Problem Section -->
+    <section id="problem" class="problem">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">The Challenge We Face</h2>
+                <p class="section-subtitle">Millions across Africa are excluded from digital banking</p>
+            </div>
+            <div class="problem-content">
+                <div class="problem-stats" data-aos="fade-right">
+                    <div class="stat-card">
+                        <div class="stat-number">66%</div>
+                        <div class="stat-label">Unbanked Adults in Sub-Saharan Africa</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">2000+</div>
+                        <div class="stat-label">Languages Spoken Across Africa</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">38%</div>
+                        <div class="stat-label">Adult Literacy Rate in Some Regions</div>
+                    </div>
+                </div>
+                <div class="problem-visual" data-aos="fade-left">
+                    <div class="africa-map">
+                        <i class="fas fa-globe-africa"></i>
+                        <div class="map-points">
+                            <div class="point point-1"></div>
+                            <div class="point point-2"></div>
+                            <div class="point point-3"></div>
+                            <div class="point point-4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="problem-points" data-aos="fade-up" data-aos-delay="300">
+                <div class="point-card">
+                    <i class="fas fa-ban"></i>
+                    <h3>Digital Exclusion</h3>
+                    <p>Complex interfaces and literacy requirements lock out millions</p>
+                </div>
+                <div class="point-card">
+                    <i class="fas fa-language"></i>
+                    <h3>Language Barriers</h3>
+                    <p>Banking services available only in colonial languages</p>
+                </div>
+                <div class="point-card">
+                    <i class="fas fa-wifi"></i>
+                    <h3>Connectivity Issues</h3>
+                    <p>Unreliable internet access in rural and remote areas</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution" class="solution">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Our Solution</h2>
+                <p class="section-subtitle">Voice-powered banking that speaks your language</p>
+            </div>
+            <div class="solution-content">
+                <div class="solution-features">
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="feature-icon">
+                            <i class="fas fa-microphone-alt"></i>
+                        </div>
+                        <h3>Voice-Activated Banking</h3>
+                        <p>Speak naturally to perform banking operations - no typing required</p>
+                    </div>
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="feature-icon">
+                            <i class="fas fa-globe-africa"></i>
+                        </div>
+                        <h3>Local Language Support</h3>
+                        <p>Available in 11 official South African languages and expanding</p>
+                    </div>
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="feature-icon">
+                            <i class="fas fa-wifi-slash"></i>
+                        </div>
+                        <h3>Offline Functionality</h3>
+                        <p>Core features work without internet connection</p>
+                    </div>
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Secure Transactions</h3>
+                        <p>Voice biometrics and encryption ensure maximum security</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Journey Section -->
+    <section id="journey" class="journey">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">Simple, intuitive banking in your native language</p>
+            </div>
+            <div class="journey-content">
+                <div class="journey-persona" data-aos="fade-right">
+                    <div class="persona-card">
+                        <div class="persona-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <h3>Meet Nomsa</h3>
+                        <p>A small business owner from Limpopo who speaks Sepedi and needs to check her account balance while traveling.</p>
+                    </div>
+                </div>
+                <div class="journey-steps" data-aos="fade-left">
+                    <div class="step-item active" data-step="1">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Voice Command</h4>
+                            <p>"Bona tšhelete ya ka" (Check my balance)</p>
+                            <div class="step-icon"><i class="fas fa-microphone"></i></div>
+                        </div>
+                    </div>
+                    <div class="step-item" data-step="2">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Voice Authentication</h4>
+                            <p>Secure voice biometric verification</p>
+                            <div class="step-icon"><i class="fas fa-shield-alt"></i></div>
+                        </div>
+                    </div>
+                    <div class="step-item" data-step="3">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Process Request</h4>
+                            <p>AI processes command in local language</p>
+                            <div class="step-icon"><i class="fas fa-brain"></i></div>
+                        </div>
+                    </div>
+                    <div class="step-item" data-step="4">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Voice Response</h4>
+                            <p>"Tšhelete ya gago ke R1,250" (Your balance is R1,250)</p>
+                            <div class="step-icon"><i class="fas fa-volume-up"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="demo">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Live Demo</h2>
+                <p class="section-subtitle">Experience VoiceBank Africa in action</p>
+            </div>
+            <div class="demo-content">
+                <div class="demo-interface" data-aos="fade-up">
+                    <div class="demo-phone">
+                        <div class="demo-screen">
+                            <div class="demo-header">
+                                <div class="demo-time">14:30</div>
+                                <div class="demo-battery">
+                                    <i class="fas fa-battery-three-quarters"></i>
+                                </div>
+                            </div>
+                            <div class="demo-app">
+                                <div class="app-logo">
+                                    <i class="fas fa-microphone-alt"></i>
+                                    <span>VoiceBank</span>
+                                </div>
+                                <div class="demo-status" id="demoStatus">Ready to listen...</div>
+                                <div class="demo-waveform" id="demoWaveform">
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                </div>
+                                <div class="demo-response" id="demoResponse"></div>
+                                <div class="demo-balance" id="demoBalance"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="demo-controls" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Try These Commands:</h3>
+                    <div class="command-buttons">
+                        <button class="command-btn" onclick="simulateCommand('balance', 'Check my balance', 'Your balance is R1,250.50')">
+                            <i class="fas fa-wallet"></i>
+                            Check Balance
+                        </button>
+                        <button class="command-btn" onclick="simulateCommand('transfer', 'Send R100 to John', 'Transfer of R100 to John completed')">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Money
+                        </button>
+                        <button class="command-btn" onclick="simulateCommand('history', 'Show recent transactions', 'Showing your last 5 transactions')">
+                            <i class="fas fa-history"></i>
+                            Transaction History
+                        </button>
+                        <button class="command-btn" onclick="simulateCommand('help', 'What can you do?', 'I can help with balance, transfers, history, and more')">
+                            <i class="fas fa-question-circle"></i>
+                            Help
+                        </button>
+                    </div>
+                    <div class="language-selector">
+                        <label>Select Language:</label>
+                        <select id="languageSelect">
+                            <option value="en">English</option>
+                            <option value="zu">isiZulu</option>
+                            <option value="xh">isiXhosa</option>
+                            <option value="af">Afrikaans</option>
+                            <option value="st">Sesotho</option>
+                            <option value="tn">Setswana</option>
+                            <option value="ss">siSwati</option>
+                            <option value="ve">Tshivenda</option>
+                            <option value="ts">Xitsonga</option>
+                            <option value="nr">isiNdebele</option>
+                            <option value="nso">Sepedi</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Stack Section -->
+    <section id="tech" class="tech">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Technology Stack</h2>
+                <p class="section-subtitle">Built with cutting-edge technologies for reliability and scale</p>
+            </div>
+            <div class="tech-content">
+                <div class="tech-category" data-aos="fade-up" data-aos-delay="100">
+                    <h3><i class="fas fa-microphone"></i> Voice AI</h3>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fab fa-google"></i>
+                            </div>
+                            <div class="tech-info">
+                                <h4>Google Speech-to-Text</h4>
+                                <p>Advanced speech recognition with local language support</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div class="tech-info">
+                                <h4>Mozilla DeepSpeech</h4>
+                                <p>Open-source offline speech recognition</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tech-category" data-aos="fade-up" data-aos-delay="200">
+                    <h3><i class="fas fa-server"></i> Backend</h3>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fab fa-node-js"></i>
+                            </div>
+                            <div class="tech-info">
+                                <h4>Node.js</h4>
+                                <p>Fast, scalable server-side JavaScript runtime</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <div class="tech-info">
+                                <h4>MongoDB</h4>
+                                <p>Flexible NoSQL database for user data</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tech-category" data-aos="fade-up" data-aos-delay="300">
+                    <h3><i class="fas fa-mobile-alt"></i> Frontend</h3>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fab fa-react"></i>
+                            </div>
+                            <div class="tech-info">
+                                <h4>React Native</h4>
+                                <p>Cross-platform mobile app development</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="tech-info">
+                                <h4>Flutter</h4>
+                                <p>Beautiful native mobile applications</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tech-category" data-aos="fade-up" data-aos-delay="400">
+                    <h3><i class="fas fa-shield-alt"></i> Security</h3>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fas fa-key"></i>
+                            </div>
+                            <div class="tech-info">
+                                <h4>OAuth2 & JWT</h4>
+                                <p>Secure authentication and authorization</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div class="tech-info">
+                                <h4>AES Encryption</h4>
+                                <p>End-to-end encryption for all transactions</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact & Innovation Section -->
+    <section id="impact" class="impact">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Impact & Innovation</h2>
+                <p class="section-subtitle">Transforming financial inclusion across Africa</p>
+            </div>
+            <div class="impact-content">
+                <div class="impact-visual" data-aos="fade-right">
+                    <div class="africa-continent">
+                        <svg viewBox="0 0 400 400" class="africa-svg">
+                            <path d="M200 50 C250 50, 300 100, 300 150 C300 200, 280 250, 250 300 C220 350, 180 350, 150 300 C120 250, 100 200, 100 150 C100 100, 150 50, 200 50 Z" fill="url(#africaGradient)" stroke="#FF6B35" stroke-width="2"/>
+                            <defs>
+                                <linearGradient id="africaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#FF6B35;stop-opacity:0.8" />
+                                    <stop offset="50%" style="stop-color:#2E8B57;stop-opacity:0.8" />
+                                    <stop offset="100%" style="stop-color:#FFD700;stop-opacity:0.8" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <div class="impact-points">
+                            <div class="impact-point" style="top: 30%; left: 40%;">
+                                <div class="point-pulse"></div>
+                                <div class="point-info">Nigeria: 95M unbanked</div>
+                            </div>
+                            <div class="impact-point" style="top: 60%; left: 50%;">
+                                <div class="point-pulse"></div>
+                                <div class="point-info">Kenya: Mobile money leader</div>
+                            </div>
+                            <div class="impact-point" style="top: 80%; left: 30%;">
+                                <div class="point-pulse"></div>
+                                <div class="point-info">South Africa: 11 languages</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="impact-stats" data-aos="fade-left">
+                    <div class="impact-card">
+                        <div class="impact-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="impact-number">400M+</div>
+                        <div class="impact-label">Potential Users Across Africa</div>
+                    </div>
+                    <div class="impact-card">
+                        <div class="impact-icon">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <div class="impact-number">2000+</div>
+                        <div class="impact-label">Languages We Can Support</div>
+                    </div>
+                    <div class="impact-card">
+                        <div class="impact-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="impact-number">85%</div>
+                        <div class="impact-label">Reduction in Banking Barriers</div>
+                    </div>
+                </div>
+            </div>
+            <div class="innovation-features" data-aos="fade-up" data-aos-delay="300">
+                <div class="innovation-card">
+                    <h3><i class="fas fa-lightbulb"></i> What Makes Us Different</h3>
+                    <ul>
+                        <li>First voice-first banking platform for Africa</li>
+                        <li>Offline-capable with sync when connected</li>
+                        <li>Cultural context awareness in language processing</li>
+                        <li>Community-driven feature development</li>
+                    </ul>
+                </div>
+                <div class="innovation-card">
+                    <h3><i class="fas fa-rocket"></i> Long-term Vision</h3>
+                    <ul>
+                        <li>Financial empowerment for 100M+ Africans</li>
+                        <li>Cross-border payments in local languages</li>
+                        <li>AI-powered financial literacy education</li>
+                        <li>Partnerships with local banks and governments</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Meet Our Team</h2>
+                <p class="section-subtitle">Passionate innovators building the future of African banking</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member" data-aos="fade-up" data-aos-delay="100">
+                    <div class="member-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h3>Paballo</h3>
+                    <p class="member-role">Presentation Lead & UX Designer</p>
+                    <p class="member-bio">Expert in user experience design and presentation strategy</p>
+                    <div class="member-contact">
+                        <i class="fas fa-envelope"></i> paballo@voicebank.africa
+                    </div>
+                </div>
+                <div class="team-member" data-aos="fade-up" data-aos-delay="200">
+                    <div class="member-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h3>Tumi</h3>
+                    <p class="member-role">Research Lead & Data Analyst</p>
+                    <p class="member-bio">Specialist in African financial markets and user research</p>
+                    <div class="member-contact">
+                        <i class="fas fa-envelope"></i> tumi@voicebank.africa
+                    </div>
+                </div>
+                <div class="team-member" data-aos="fade-up" data-aos-delay="300">
+                    <div class="member-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h3>Jabelo</h3>
+                    <p class="member-role">Vision & Technical Lead</p>
+                    <p class="member-bio">Full-stack developer with expertise in voice AI and mobile apps</p>
+                    <div class="member-contact">
+                        <i class="fas fa-envelope"></i> jabelo@voicebank.africa
+                    </div>
+                </div>
+                <div class="team-member" data-aos="fade-up" data-aos-delay="400">
+                    <div class="member-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h3>Kutloano</h3>
+                    <p class="member-role">UX Lead & Product Manager</p>
+                    <p class="member-bio">Product strategist focused on inclusive design and accessibility</p>
+                    <div class="member-contact">
+                        <i class="fas fa-envelope"></i> kutloano@voicebank.africa
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section id="roadmap" class="roadmap">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Roadmap</h2>
+                <p class="section-subtitle">Our journey to transform African banking</p>
+            </div>
+            <div class="roadmap-timeline">
+                <div class="timeline-item" data-aos="fade-right" data-aos-delay="100">
+                    <div class="timeline-marker">
+                        <div class="timeline-number">1</div>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Phase 1: MVP Development</h3>
+                        <p class="timeline-period">Next 3 months</p>
+                        <ul>
+                            <li>Core voice banking features</li>
+                            <li>Support for 5 major South African languages</li>
+                            <li>Basic security implementation</li>
+                            <li>Pilot testing with 100 users</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-left" data-aos-delay="200">
+                    <div class="timeline-marker">
+                        <div class="timeline-number">2</div>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Phase 2: Scale & Partnerships</h3>
+                        <p class="timeline-period">Months 4-8</p>
+                        <ul>
+                            <li>Partnership with major South African banks</li>
+                            <li>Expand to all 11 official languages</li>
+                            <li>Advanced voice biometrics</li>
+                            <li>10,000+ active users</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-right" data-aos-delay="300">
+                    <div class="timeline-marker">
+                        <div class="timeline-number">3</div>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Phase 3: Continental Expansion</h3>
+                        <p class="timeline-period">Year 2</p>
+                        <ul>
+                            <li>Launch in Nigeria, Kenya, and Ghana</li>
+                            <li>Support for 50+ African languages</li>
+                            <li>Cross-border payment capabilities</li>
+                            <li>1M+ users across Africa</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-left" data-aos-delay="400">
+                    <div class="timeline-marker">
+                        <div class="timeline-number">4</div>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Phase 4: Financial Ecosystem</h3>
+                        <p class="timeline-period">Year 3+</p>
+                        <ul>
+                            <li>AI-powered financial advisory</li>
+                            <li>Microfinance and lending services</li>
+                            <li>Integration with government services</li>
+                            <li>10M+ users, true financial inclusion</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section id="cta" class="cta">
+        <div class="container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2>Let's Build a More Inclusive Africa</h2>
+                <p>Join us in revolutionizing banking for millions across the continent</p>
+                <div class="cta-buttons">
+                    <button class="btn-primary" onclick="window.open('https://github.com/voicebank-africa', '_blank')">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </button>
+                    <button class="btn-secondary" onclick="window.open('mailto:team@voicebank.africa', '_blank')">
+                        <i class="fas fa-envelope"></i> Contact Us
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-microphone-alt"></i>
+                    <span>VoiceBank Africa</span>
+                </div>
+                <p>Bank with your voice. Anytime. Anywhere.</p>
+                <div class="footer-links">
+                    <a href="#hero">Home</a>
+                    <a href="#problem">Problem</a>
+                    <a href="#solution">Solution</a>
+                    <a href="#demo">Demo</a>
+                    <a href="#tech">Technology</a>
+                    <a href="#impact">Impact</a>
+                    <a href="#team">Team</a>
+                    <a href="#roadmap">Roadmap</a>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2024 VoiceBank Africa. Built with ❤️ for Africa.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
