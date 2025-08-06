@@ -20,12 +20,34 @@
     <div class="slide-navigation">
         <div class="nav-left">
             <div class="logo">
-                <svg class="african-logo" viewBox="0 0 100 100" width="40" height="40">
-                    <!-- African continent with microphone -->
-                    <path d="M50 10 C65 10, 80 25, 80 40 C80 55, 75 70, 65 80 C55 90, 45 90, 35 80 C25 70, 20 55, 20 40 C20 25, 35 10, 50 10 Z" fill="#FFD700" stroke="#000" stroke-width="2"/>
-                    <circle cx="50" cy="45" r="8" fill="#000"/>
-                    <rect x="47" y="53" width="6" height="15" fill="#000"/>
-                    <ellipse cx="50" cy="70" rx="12" ry="3" fill="#000"/>
+                <svg class="african-logo" viewBox="0 0 120 60" width="50" height="25">
+                    <defs>
+                        <linearGradient id="africaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#B8860B;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <!-- Stylized African continent outline -->
+                    <path d="M25 15 C35 12, 45 15, 50 20 C55 25, 58 30, 55 35 C52 40, 48 42, 45 45 C40 48, 35 47, 30 45 C25 42, 22 38, 20 35 C18 30, 20 25, 22 20 C23 18, 24 16, 25 15 Z"
+                          fill="url(#africaGradient)" stroke="#FFFFFF" stroke-width="1.5"/>
+
+                    <!-- Audio/Sound waves emanating from Africa -->
+                    <g stroke="#D4AF37" stroke-width="2" fill="none" opacity="0.8">
+                        <!-- Inner waves -->
+                        <path d="M60 20 Q65 25, 60 30" class="audio-wave wave-1"/>
+                        <path d="M60 18 Q67 25, 60 32" class="audio-wave wave-2"/>
+                        <path d="M60 16 Q69 25, 60 34" class="audio-wave wave-3"/>
+
+                        <!-- Outer waves -->
+                        <path d="M70 15 Q78 25, 70 35" class="audio-wave wave-4"/>
+                        <path d="M75 12 Q85 25, 75 38" class="audio-wave wave-5"/>
+                        <path d="M80 10 Q92 25, 80 40" class="audio-wave wave-6"/>
+                    </g>
+
+                    <!-- Microphone icon in center of Africa -->
+                    <circle cx="37" cy="30" r="4" fill="#FFFFFF"/>
+                    <rect x="35" y="34" width="4" height="8" fill="#FFFFFF"/>
+                    <ellipse cx="37" cy="44" rx="6" ry="2" fill="#FFFFFF"/>
                 </svg>
                 <span>VoiceBank Africa</span>
             </div>
@@ -55,32 +77,65 @@
         <div class="slide active" data-slide="1">
             <div class="slide-content title-slide">
                 <div class="title-logo">
-                    <svg class="african-logo-large" viewBox="0 0 200 200" width="120" height="120">
+                    <svg class="african-logo-large" viewBox="0 0 300 200" width="180" height="120">
                         <defs>
                             <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#FFA500;stop-opacity:1" />
+                                <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#B8860B;stop-opacity:1" />
                             </linearGradient>
+                            <filter id="glow">
+                                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
                         </defs>
-                        <!-- Stylized African continent -->
-                        <path d="M100 20 C130 20, 160 50, 160 80 C160 110, 150 140, 130 160 C110 180, 90 180, 70 160 C50 140, 40 110, 40 80 C40 50, 70 20, 100 20 Z" fill="url(#logoGradient)" stroke="#000" stroke-width="3"/>
-                        <!-- Microphone in center -->
-                        <circle cx="100" cy="90" r="15" fill="#000"/>
-                        <rect x="95" y="105" width="10" height="25" fill="#000"/>
-                        <ellipse cx="100" cy="135" rx="20" ry="5" fill="#000"/>
-                        <!-- Sound waves -->
-                        <path d="M130 70 Q140 80, 130 90" stroke="#FFD700" stroke-width="3" fill="none"/>
-                        <path d="M135 65 Q150 80, 135 95" stroke="#FFD700" stroke-width="3" fill="none"/>
-                        <path d="M70 70 Q60 80, 70 90" stroke="#FFD700" stroke-width="3" fill="none"/>
-                        <path d="M65 65 Q50 80, 65 95" stroke="#FFD700" stroke-width="3" fill="none"/>
+
+                        <!-- Detailed African continent outline -->
+                        <path d="M80 40 C100 35, 120 40, 140 50 C160 60, 170 75, 165 90 C160 105, 150 115, 135 125 C120 135, 105 133, 90 130 C75 125, 65 115, 60 100 C55 85, 58 70, 65 55 C70 45, 75 42, 80 40 Z"
+                              fill="url(#logoGradient)" stroke="#FFFFFF" stroke-width="3" filter="url(#glow)"/>
+
+                        <!-- Multiple audio wave lines emanating from Africa -->
+                        <g stroke="#D4AF37" stroke-width="3" fill="none" opacity="0.9">
+                            <!-- Right side waves -->
+                            <path d="M170 70 Q180 85, 170 100" class="audio-wave wave-1"/>
+                            <path d="M175 65 Q190 85, 175 105" class="audio-wave wave-2"/>
+                            <path d="M180 60 Q200 85, 180 110" class="audio-wave wave-3"/>
+                            <path d="M185 55 Q210 85, 185 115" class="audio-wave wave-4"/>
+
+                            <!-- Left side waves -->
+                            <path d="M50 70 Q40 85, 50 100" class="audio-wave wave-5"/>
+                            <path d="M45 65 Q30 85, 45 105" class="audio-wave wave-6"/>
+                            <path d="M40 60 Q20 85, 40 110" class="audio-wave wave-7"/>
+                            <path d="M35 55 Q10 85, 35 115" class="audio-wave wave-8"/>
+
+                            <!-- Top waves -->
+                            <path d="M100 35 Q115 25, 130 35" class="audio-wave wave-9"/>
+                            <path d="M95 30 Q115 15, 135 30" class="audio-wave wave-10"/>
+
+                            <!-- Bottom waves -->
+                            <path d="M100 135 Q115 145, 130 135" class="audio-wave wave-11"/>
+                            <path d="M95 140 Q115 155, 135 140" class="audio-wave wave-12"/>
+                        </g>
+
+                        <!-- Central microphone -->
+                        <circle cx="112" cy="85" r="8" fill="#FFFFFF"/>
+                        <rect x="108" y="93" width="8" height="15" fill="#FFFFFF"/>
+                        <ellipse cx="112" cy="112" rx="12" ry="3" fill="#FFFFFF"/>
+
+                        <!-- Voice indicator dots -->
+                        <circle cx="95" cy="85" r="2" fill="#FFFFFF" opacity="0.8" class="voice-dot dot-1"/>
+                        <circle cx="100" cy="82" r="2" fill="#FFFFFF" opacity="0.6" class="voice-dot dot-2"/>
+                        <circle cx="105" cy="79" r="2" fill="#FFFFFF" opacity="0.4" class="voice-dot dot-3"/>
                     </svg>
                 </div>
                 <h1 class="slide-title">VoiceBank Africa</h1>
                 <p class="slide-tagline">Bank with your voice. Anytime. Anywhere.</p>
                 <div class="slide-meta">
-                    <p class="hackathon-info">WeThinkCode Hackathon 2024</p>
+                    <p class="hackathon-info">GIRLCODE Hackathon 2025</p>
                     <p class="team-info">Team: Paballo • Tumi • Jabelo • Kutloano</p>
-                    <p class="date-info">August 8 - October 11, 2024</p>
+                    <p class="date-info">August 8 - October 11, 2025</p>
                 </div>
             </div>
         </div>
@@ -164,70 +219,324 @@
             </div>
         </div>
 
-    <!-- Problem Section -->
-    <section id="problem" class="problem">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2 class="section-title">The Challenge We Face</h2>
-                <p class="section-subtitle">Millions across Africa are excluded from digital banking</p>
-            </div>
-            <div class="problem-content">
-                <div class="problem-stats" data-aos="fade-right">
-                    <div class="stat-card">
-                        <div class="stat-number">66%</div>
-                        <div class="stat-label">Unbanked Adults in Sub-Saharan Africa</div>
+        <!-- Slide 4: User Journey -->
+        <div class="slide" data-slide="4">
+            <div class="slide-content">
+                <h2 class="slide-heading">User Journey</h2>
+                <div class="journey-layout">
+                    <div class="persona-section">
+                        <div class="persona-card">
+                            <div class="persona-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <h3>Meet Nomsa</h3>
+                            <p>Small business owner from Limpopo who speaks Sepedi</p>
+                        </div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-number">2000+</div>
-                        <div class="stat-label">Languages Spoken Across Africa</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">38%</div>
-                        <div class="stat-label">Adult Literacy Rate in Some Regions</div>
-                    </div>
-                </div>
-                <div class="problem-visual" data-aos="fade-left">
-                    <div class="africa-map">
-                        <i class="fas fa-globe-africa"></i>
-                        <div class="map-points">
-                            <div class="point point-1"></div>
-                            <div class="point point-2"></div>
-                            <div class="point point-3"></div>
-                            <div class="point point-4"></div>
+                    <div class="journey-steps">
+                        <div class="step-flow">
+                            <div class="step-item">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h4>Voice Command</h4>
+                                    <p>"Bona tšhelete ya ka"</p>
+                                    <small>(Check my balance)</small>
+                                </div>
+                            </div>
+                            <div class="step-arrow">→</div>
+                            <div class="step-item">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h4>Authentication</h4>
+                                    <p>Voice biometric verification</p>
+                                </div>
+                            </div>
+                            <div class="step-arrow">→</div>
+                            <div class="step-item">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h4>Process</h4>
+                                    <p>AI processes in Sepedi</p>
+                                </div>
+                            </div>
+                            <div class="step-arrow">→</div>
+                            <div class="step-item">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <h4>Response</h4>
+                                    <p>"Tšhelete ya gago ke R1,250"</p>
+                                    <small>(Your balance is R1,250)</small>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="problem-points" data-aos="fade-up" data-aos-delay="300">
-                <div class="point-card">
-                    <i class="fas fa-ban"></i>
-                    <h3>Digital Exclusion</h3>
-                    <p>Complex interfaces and literacy requirements lock out millions</p>
-                </div>
-                <div class="point-card">
-                    <i class="fas fa-language"></i>
-                    <h3>Language Barriers</h3>
-                    <p>Banking services available only in colonial languages</p>
-                </div>
-                <div class="point-card">
-                    <i class="fas fa-wifi"></i>
-                    <h3>Connectivity Issues</h3>
-                    <p>Unreliable internet access in rural and remote areas</p>
+        </div>
+
+        <!-- Slide 5: Technology Stack -->
+        <div class="slide" data-slide="5">
+            <div class="slide-content">
+                <h2 class="slide-heading">Technology Stack</h2>
+                <div class="tech-grid">
+                    <div class="tech-category">
+                        <h3><i class="fas fa-microphone"></i> Voice AI</h3>
+                        <div class="tech-items">
+                            <div class="tech-item">Google Speech-to-Text</div>
+                            <div class="tech-item">Mozilla DeepSpeech</div>
+                        </div>
+                    </div>
+                    <div class="tech-category">
+                        <h3><i class="fas fa-server"></i> Backend</h3>
+                        <div class="tech-items">
+                            <div class="tech-item">Node.js</div>
+                            <div class="tech-item">MongoDB</div>
+                        </div>
+                    </div>
+                    <div class="tech-category">
+                        <h3><i class="fas fa-mobile-alt"></i> Frontend</h3>
+                        <div class="tech-items">
+                            <div class="tech-item">React Native</div>
+                            <div class="tech-item">Flutter</div>
+                        </div>
+                    </div>
+                    <div class="tech-category">
+                        <h3><i class="fas fa-shield-alt"></i> Security</h3>
+                        <div class="tech-items">
+                            <div class="tech-item">OAuth2 & JWT</div>
+                            <div class="tech-item">AES Encryption</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Solution Section -->
-    <section id="solution" class="solution">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2 class="section-title">Our Solution</h2>
-                <p class="section-subtitle">Voice-powered banking that speaks your language</p>
+        <!-- Slide 6: Innovation & Impact -->
+        <div class="slide" data-slide="6">
+            <div class="slide-content">
+                <h2 class="slide-heading">Innovation & Impact</h2>
+                <div class="impact-layout">
+                    <div class="impact-stats">
+                        <div class="impact-item">
+                            <div class="impact-number">400M+</div>
+                            <div class="impact-label">Potential Users</div>
+                        </div>
+                        <div class="impact-item">
+                            <div class="impact-number">2000+</div>
+                            <div class="impact-label">Languages Supported</div>
+                        </div>
+                        <div class="impact-item">
+                            <div class="impact-number">85%</div>
+                            <div class="impact-label">Barrier Reduction</div>
+                        </div>
+                    </div>
+                    <div class="innovation-points">
+                        <div class="innovation-item">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>First voice-first banking platform for Africa</span>
+                        </div>
+                        <div class="innovation-item">
+                            <i class="fas fa-wifi-slash"></i>
+                            <span>Offline-capable with sync when connected</span>
+                        </div>
+                        <div class="innovation-item">
+                            <i class="fas fa-brain"></i>
+                            <span>Cultural context awareness in language processing</span>
+                        </div>
+                        <div class="innovation-item">
+                            <i class="fas fa-users"></i>
+                            <span>Community-driven feature development</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="solution-content">
-                <div class="solution-features">
-                    <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+        </div>
+
+        <!-- Slide 7: Team Introduction -->
+        <div class="slide" data-slide="7">
+            <div class="slide-content">
+                <h2 class="slide-heading">Meet Our Team</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <h3>Paballo</h3>
+                        <p class="member-role">Presentation Lead & UX Designer</p>
+                        <p class="member-location">Johannesburg</p>
+                        <p class="member-email">paballo@voicebank.africa</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <h3>Tumi</h3>
+                        <p class="member-role">Research Lead & Data Analyst</p>
+                        <p class="member-location">Cape Town</p>
+                        <p class="member-email">tumi@voicebank.africa</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <h3>Jabelo</h3>
+                        <p class="member-role">Vision & Technical Lead</p>
+                        <p class="member-location">Durban</p>
+                        <p class="member-email">jabelo@voicebank.africa</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <h3>Kutloano</h3>
+                        <p class="member-role">UX Lead & Product Manager</p>
+                        <p class="member-location">Pretoria</p>
+                        <p class="member-email">kutloano@voicebank.africa</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Roadmap -->
+        <div class="slide" data-slide="8">
+            <div class="slide-content">
+                <h2 class="slide-heading">Roadmap</h2>
+                <div class="roadmap-timeline">
+                    <div class="timeline-phase">
+                        <div class="phase-header">
+                            <div class="phase-number">1</div>
+                            <div class="phase-title">MVP Development</div>
+                            <div class="phase-date">Aug 8 - Aug 31, 2024</div>
+                        </div>
+                        <div class="phase-content">
+                            <ul>
+                                <li>Core voice banking features</li>
+                                <li>Support for 5 major SA languages</li>
+                                <li>Basic security implementation</li>
+                                <li>Pilot testing with 100 users</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-phase">
+                        <div class="phase-header">
+                            <div class="phase-number">2</div>
+                            <div class="phase-title">Scale & Partnerships</div>
+                            <div class="phase-date">Sep 1 - Sep 30, 2024</div>
+                        </div>
+                        <div class="phase-content">
+                            <ul>
+                                <li>Partnership with major SA banks</li>
+                                <li>Expand to all 11 official languages</li>
+                                <li>Advanced voice biometrics</li>
+                                <li>10,000+ active users</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-phase">
+                        <div class="phase-header">
+                            <div class="phase-number">3</div>
+                            <div class="phase-title">Continental Expansion</div>
+                            <div class="phase-date">Oct 1 - Oct 11, 2024</div>
+                        </div>
+                        <div class="phase-content">
+                            <ul>
+                                <li>Launch in Nigeria, Kenya, Ghana</li>
+                                <li>Support for 50+ African languages</li>
+                                <li>Cross-border payment capabilities</li>
+                                <li>1M+ users across Africa</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Demo -->
+        <div class="slide" data-slide="9">
+            <div class="slide-content">
+                <h2 class="slide-heading">Live Demo</h2>
+                <div class="demo-layout">
+                    <div class="demo-phone">
+                        <div class="phone-screen">
+                            <div class="demo-header">VoiceBank</div>
+                            <div class="demo-status" id="demoStatus">Ready to listen...</div>
+                            <div class="demo-waveform">
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                            </div>
+                            <div class="demo-response" id="demoResponse"></div>
+                            <div class="demo-balance" id="demoBalance"></div>
+                        </div>
+                    </div>
+                    <div class="demo-controls">
+                        <h3>Try These Commands:</h3>
+                        <div class="command-grid">
+                            <button class="command-btn" onclick="simulateCommand('balance')">
+                                <i class="fas fa-wallet"></i>
+                                Check Balance
+                            </button>
+                            <button class="command-btn" onclick="simulateCommand('transfer')">
+                                <i class="fas fa-paper-plane"></i>
+                                Send Money
+                            </button>
+                            <button class="command-btn" onclick="simulateCommand('history')">
+                                <i class="fas fa-history"></i>
+                                Transaction History
+                            </button>
+                            <button class="command-btn" onclick="simulateCommand('help')">
+                                <i class="fas fa-question-circle"></i>
+                                Help
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Call to Action -->
+        <div class="slide" data-slide="10">
+            <div class="slide-content cta-slide">
+                <div class="cta-content">
+                    <h2 class="cta-title">Let's Build a More Inclusive Africa</h2>
+                    <p class="cta-subtitle">Join us in revolutionizing banking for millions across the continent</p>
+                    <div class="cta-stats">
+                        <div class="cta-stat">
+                            <div class="stat-number">400M+</div>
+                            <div class="stat-label">Lives to Impact</div>
+                        </div>
+                        <div class="cta-stat">
+                            <div class="stat-number">54</div>
+                            <div class="stat-label">Countries to Reach</div>
+                        </div>
+                        <div class="cta-stat">
+                            <div class="stat-number">2000+</div>
+                            <div class="stat-label">Languages to Support</div>
+                        </div>
+                    </div>
+                    <div class="cta-buttons">
+                        <button class="cta-btn primary">
+                            <i class="fab fa-github"></i>
+                            View on GitHub
+                        </button>
+                        <button class="cta-btn secondary">
+                            <i class="fas fa-envelope"></i>
+                            Contact Us
+                        </button>
+                    </div>
+                    <div class="cta-footer">
+                        <p>Built with ❤️ for Africa | VoiceBank Africa 2024</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
                         <div class="feature-icon">
                             <i class="fas fa-microphone-alt"></i>
                         </div>
@@ -714,7 +1023,7 @@
                 <h2>Let's Build a More Inclusive Africa</h2>
                 <p>Join us in revolutionizing banking for millions across the continent</p>
                 <div class="cta-buttons">
-                    <button class="btn-primary" onclick="window.open('https://github.com/voicebank-africa', '_blank')">
+                    <button class="btn-primary" onclick="window.open('https://github.com/jabelopitso/VoiceBank-Africa', '_blank')">
                         <i class="fab fa-github"></i> View on GitHub
                     </button>
                     <button class="btn-secondary" onclick="window.open('mailto:team@voicebank.africa', '_blank')">
@@ -745,7 +1054,7 @@
                     <a href="#roadmap">Roadmap</a>
                 </div>
                 <div class="footer-bottom">
-                    <p>&copy; 2024 VoiceBank Africa. Built with ❤️ for Africa.</p>
+                    <p>&copy; 2025 VoiceBank Africa. Built with ❤️ for Africa.</p>
                 </div>
             </div>
         </div>
