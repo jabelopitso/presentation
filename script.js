@@ -6,399 +6,499 @@ let totalSlides = 10;
 let isTransitioning = false;
 
 // Initialize presentation
-document.addEventListener('DOMContentLoaded', () => {
-    showLoadingScreen();
-    setTimeout(() => {
-        hideLoadingScreen();
-        initializeSlides();
-        updateSlideCounter();
-        setupKeyboardNavigation();
-        setupTouchNavigation();
-        startAutoAnimations();
-    }, 2000);
+document.addEventListener("DOMContentLoaded", () => {
+  showLoadingScreen();
+  setTimeout(() => {
+    hideLoadingScreen();
+    initializeSlides();
+    updateSlideCounter();
+    setupKeyboardNavigation();
+    setupTouchNavigation();
+    startAutoAnimations();
+    createParticleEffect();
+    enhanceSlideTransitions();
+  }, 2000);
 });
 
 // Initialize slides
 function initializeSlides() {
-    const slides = document.querySelectorAll('.slide');
-    totalSlides = slides.length;
+  const slides = document.querySelectorAll(".slide");
+  totalSlides = slides.length;
 
-    // Set initial state
-    slides.forEach((slide, index) => {
-        slide.classList.remove('active', 'prev');
-        if (index === 0) {
-            slide.classList.add('active');
-        }
-    });
+  // Set initial state
+  slides.forEach((slide, index) => {
+    slide.classList.remove("active", "prev");
+    if (index === 0) {
+      slide.classList.add("active");
+    }
+  });
 
-    updateNavigationButtons();
+  updateNavigationButtons();
 }
 
 // Navigation functions
 function nextSlide() {
-    if (isTransitioning || currentSlide >= totalSlides) return;
+  if (isTransitioning || currentSlide >= totalSlides) return;
 
-    isTransitioning = true;
-    const currentSlideEl = document.querySelector(`.slide[data-slide="${currentSlide}"]`);
-    const nextSlideEl = document.querySelector(`.slide[data-slide="${currentSlide + 1}"]`);
+  isTransitioning = true;
+  const currentSlideEl = document.querySelector(
+    `.slide[data-slide="${currentSlide}"]`
+  );
+  const nextSlideEl = document.querySelector(
+    `.slide[data-slide="${currentSlide + 1}"]`
+  );
 
-    if (currentSlideEl && nextSlideEl) {
-        currentSlideEl.classList.remove('active');
-        currentSlideEl.classList.add('prev');
-        nextSlideEl.classList.add('active');
+  if (currentSlideEl && nextSlideEl) {
+    currentSlideEl.classList.remove("active");
+    currentSlideEl.classList.add("prev");
+    nextSlideEl.classList.add("active");
 
-        currentSlide++;
-        updateSlideCounter();
-        updateNavigationButtons();
+    currentSlide++;
+    updateSlideCounter();
+    updateNavigationButtons();
 
-        setTimeout(() => {
-            isTransitioning = false;
-            triggerSlideAnimations(currentSlide);
-        }, 500);
-    }
+    setTimeout(() => {
+      isTransitioning = false;
+      triggerSlideAnimations(currentSlide);
+    }, 500);
+  }
 }
 
 function previousSlide() {
-    if (isTransitioning || currentSlide <= 1) return;
+  if (isTransitioning || currentSlide <= 1) return;
 
-    isTransitioning = true;
-    const currentSlideEl = document.querySelector(`.slide[data-slide="${currentSlide}"]`);
-    const prevSlideEl = document.querySelector(`.slide[data-slide="${currentSlide - 1}"]`);
+  isTransitioning = true;
+  const currentSlideEl = document.querySelector(
+    `.slide[data-slide="${currentSlide}"]`
+  );
+  const prevSlideEl = document.querySelector(
+    `.slide[data-slide="${currentSlide - 1}"]`
+  );
 
-    if (currentSlideEl && prevSlideEl) {
-        currentSlideEl.classList.remove('active');
-        prevSlideEl.classList.remove('prev');
-        prevSlideEl.classList.add('active');
+  if (currentSlideEl && prevSlideEl) {
+    currentSlideEl.classList.remove("active");
+    prevSlideEl.classList.remove("prev");
+    prevSlideEl.classList.add("active");
 
-        currentSlide--;
-        updateSlideCounter();
-        updateNavigationButtons();
+    currentSlide--;
+    updateSlideCounter();
+    updateNavigationButtons();
 
-        setTimeout(() => {
-            isTransitioning = false;
-            triggerSlideAnimations(currentSlide);
-        }, 500);
-    }
+    setTimeout(() => {
+      isTransitioning = false;
+      triggerSlideAnimations(currentSlide);
+    }, 500);
+  }
 }
 
 function goToSlide(slideNumber) {
-    if (isTransitioning || slideNumber < 1 || slideNumber > totalSlides || slideNumber === currentSlide) return;
+  if (
+    isTransitioning ||
+    slideNumber < 1 ||
+    slideNumber > totalSlides ||
+    slideNumber === currentSlide
+  )
+    return;
 
-    isTransitioning = true;
-    const currentSlideEl = document.querySelector(`.slide[data-slide="${currentSlide}"]`);
-    const targetSlideEl = document.querySelector(`.slide[data-slide="${slideNumber}"]`);
+  isTransitioning = true;
+  const currentSlideEl = document.querySelector(
+    `.slide[data-slide="${currentSlide}"]`
+  );
+  const targetSlideEl = document.querySelector(
+    `.slide[data-slide="${slideNumber}"]`
+  );
 
-    if (currentSlideEl && targetSlideEl) {
-        // Remove active class from current slide
-        currentSlideEl.classList.remove('active');
+  if (currentSlideEl && targetSlideEl) {
+    // Remove active class from current slide
+    currentSlideEl.classList.remove("active");
 
-        // Remove prev class from all slides
-        document.querySelectorAll('.slide').forEach(slide => {
-            slide.classList.remove('prev');
-        });
+    // Remove prev class from all slides
+    document.querySelectorAll(".slide").forEach((slide) => {
+      slide.classList.remove("prev");
+    });
 
-        // Add prev class to slides before target
-        for (let i = 1; i < slideNumber; i++) {
-            const slide = document.querySelector(`.slide[data-slide="${i}"]`);
-            if (slide) slide.classList.add('prev');
-        }
-
-        // Activate target slide
-        targetSlideEl.classList.add('active');
-
-        currentSlide = slideNumber;
-        updateSlideCounter();
-        updateNavigationButtons();
-
-        setTimeout(() => {
-            isTransitioning = false;
-            triggerSlideAnimations(currentSlide);
-        }, 500);
+    // Add prev class to slides before target
+    for (let i = 1; i < slideNumber; i++) {
+      const slide = document.querySelector(`.slide[data-slide="${i}"]`);
+      if (slide) slide.classList.add("prev");
     }
+
+    // Activate target slide
+    targetSlideEl.classList.add("active");
+
+    currentSlide = slideNumber;
+    updateSlideCounter();
+    updateNavigationButtons();
+
+    setTimeout(() => {
+      isTransitioning = false;
+      triggerSlideAnimations(currentSlide);
+    }, 500);
+  }
 }
 
 // Update slide counter
 function updateSlideCounter() {
-    const currentSlideEl = document.getElementById('currentSlide');
-    const totalSlidesEl = document.getElementById('totalSlides');
-    const slideCounter = document.querySelector('.slide-counter');
+  const currentSlideEl = document.getElementById("currentSlide");
+  const totalSlidesEl = document.getElementById("totalSlides");
+  const slideCounter = document.querySelector(".slide-counter");
 
-    if (currentSlideEl) currentSlideEl.textContent = currentSlide;
-    if (totalSlidesEl) totalSlidesEl.textContent = totalSlides;
+  if (currentSlideEl) currentSlideEl.textContent = currentSlide;
+  if (totalSlidesEl) totalSlidesEl.textContent = totalSlides;
 
-    // Update progress indicator
-    if (slideCounter) {
-        const progress = (currentSlide / totalSlides) * 100;
-        slideCounter.style.setProperty('--progress', progress);
-    }
+  // Update progress indicator
+  if (slideCounter) {
+    const progress = (currentSlide / totalSlides) * 100;
+    slideCounter.style.setProperty("--progress", progress);
+  }
 }
 
 // Update navigation buttons
 function updateNavigationButtons() {
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
 
-    if (prevBtn) {
-        prevBtn.disabled = currentSlide <= 1;
-    }
+  if (prevBtn) {
+    prevBtn.disabled = currentSlide <= 1;
+  }
 
-    if (nextBtn) {
-        nextBtn.disabled = currentSlide >= totalSlides;
-    }
+  if (nextBtn) {
+    nextBtn.disabled = currentSlide >= totalSlides;
+  }
 }
 
 // Keyboard navigation
 function setupKeyboardNavigation() {
-    document.addEventListener('keydown', (e) => {
-        switch (e.key) {
-            case 'ArrowRight':
-            case ' ':
-            case 'PageDown':
-                e.preventDefault();
-                nextSlide();
-                break;
-            case 'ArrowLeft':
-            case 'PageUp':
-                e.preventDefault();
-                previousSlide();
-                break;
-            case 'Home':
-                e.preventDefault();
-                goToSlide(1);
-                break;
-            case 'End':
-                e.preventDefault();
-                goToSlide(totalSlides);
-                break;
-            case 'F11':
-                e.preventDefault();
-                toggleFullscreen();
-                break;
-            case 'Escape':
-                if (document.fullscreenElement) {
-                    document.exitFullscreen();
-                }
-                break;
+  document.addEventListener("keydown", (e) => {
+    switch (e.key) {
+      case "ArrowRight":
+      case " ":
+      case "PageDown":
+        e.preventDefault();
+        nextSlide();
+        break;
+      case "ArrowLeft":
+      case "PageUp":
+        e.preventDefault();
+        previousSlide();
+        break;
+      case "Home":
+        e.preventDefault();
+        goToSlide(1);
+        break;
+      case "End":
+        e.preventDefault();
+        goToSlide(totalSlides);
+        break;
+      case "F11":
+        e.preventDefault();
+        toggleFullscreen();
+        break;
+      case "Escape":
+        if (document.fullscreenElement) {
+          document.exitFullscreen();
         }
-    });
+        break;
+    }
+  });
 }
 
 // Touch navigation for mobile
 function setupTouchNavigation() {
-    let startX = 0;
-    let startY = 0;
+  let startX = 0;
+  let startY = 0;
 
-    document.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
-        startY = e.touches[0].clientY;
-    });
+  document.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+  });
 
-    document.addEventListener('touchend', (e) => {
-        if (!startX || !startY) return;
+  document.addEventListener("touchend", (e) => {
+    if (!startX || !startY) return;
 
-        const endX = e.changedTouches[0].clientX;
-        const endY = e.changedTouches[0].clientY;
+    const endX = e.changedTouches[0].clientX;
+    const endY = e.changedTouches[0].clientY;
 
-        const diffX = startX - endX;
-        const diffY = startY - endY;
+    const diffX = startX - endX;
+    const diffY = startY - endY;
 
-        // Only trigger if horizontal swipe is more significant than vertical
-        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
-            if (diffX > 0) {
-                nextSlide(); // Swipe left = next slide
-            } else {
-                previousSlide(); // Swipe right = previous slide
-            }
-        }
+    // Only trigger if horizontal swipe is more significant than vertical
+    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+      if (diffX > 0) {
+        nextSlide(); // Swipe left = next slide
+      } else {
+        previousSlide(); // Swipe right = previous slide
+      }
+    }
 
-        startX = 0;
-        startY = 0;
-    });
+    startX = 0;
+    startY = 0;
+  });
 }
 
 // Fullscreen toggle
 function toggleFullscreen() {
-    if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen().catch(err => {
-            console.log('Error attempting to enable fullscreen:', err);
-        });
-    } else {
-        document.exitFullscreen();
-    }
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen().catch((err) => {
+      console.log("Error attempting to enable fullscreen:", err);
+    });
+  } else {
+    document.exitFullscreen();
+  }
 }
 
 // Trigger slide-specific animations
 function triggerSlideAnimations(slideNumber) {
-    const slide = document.querySelector(`.slide[data-slide="${slideNumber}"]`);
-    if (!slide) return;
+  const slide = document.querySelector(`.slide[data-slide="${slideNumber}"]`);
+  if (!slide) return;
 
-    // Animate counters for slides with statistics
-    const statNumbers = slide.querySelectorAll('.stat-number, .impact-number');
-    statNumbers.forEach(stat => {
-        const target = parseInt(stat.textContent.replace(/[^\d]/g, ''));
-        if (!isNaN(target)) {
-            animateCounter(stat, target);
-        }
-    });
-
-    // Start voice animation for demo slide
-    if (slideNumber === 9) {
-        startVoiceAnimation();
+  // Animate counters for slides with statistics
+  const statNumbers = slide.querySelectorAll(".stat-number, .impact-number");
+  statNumbers.forEach((stat) => {
+    const target = parseInt(stat.textContent.replace(/[^\d]/g, ""));
+    if (!isNaN(target)) {
+      animateCounter(stat, target);
     }
+  });
 
-    // Animate timeline phases for roadmap slide
-    if (slideNumber === 8) {
-        animateTimelinePhases();
-    }
+  // Start voice animation for demo slide
+  if (slideNumber === 9) {
+    startVoiceAnimation();
+  }
+
+  // Animate timeline phases for roadmap slide
+  if (slideNumber === 8) {
+    animateTimelinePhases();
+  }
 }
 
 // Counter animation
 function animateCounter(element, target, duration = 2000) {
-    let start = 0;
-    const increment = target / (duration / 16);
-    const suffix = element.textContent.includes('%') ? '%' :
-                   element.textContent.includes('+') ? '+' : '';
+  let start = 0;
+  const increment = target / (duration / 16);
+  const suffix = element.textContent.includes("%")
+    ? "%"
+    : element.textContent.includes("+")
+    ? "+"
+    : "";
 
-    function updateCounter() {
-        start += increment;
-        if (start < target) {
-            element.textContent = Math.floor(start) + suffix;
-            requestAnimationFrame(updateCounter);
-        } else {
-            element.textContent = target + suffix;
-        }
+  function updateCounter() {
+    start += increment;
+    if (start < target) {
+      element.textContent = Math.floor(start) + suffix;
+      requestAnimationFrame(updateCounter);
+    } else {
+      element.textContent = target + suffix;
     }
+  }
 
-    updateCounter();
+  updateCounter();
 }
 
 // Voice animation for demo
 function startVoiceAnimation() {
-    const waveform = document.querySelector('.demo-waveform');
-    if (waveform) {
-        waveform.style.opacity = '1';
-        const waveBars = waveform.querySelectorAll('.wave-bar');
-        waveBars.forEach((bar, index) => {
-            bar.style.animationDelay = `${index * 0.1}s`;
-        });
-    }
+  const waveform = document.querySelector(".demo-waveform");
+  if (waveform) {
+    waveform.style.opacity = "1";
+    const waveBars = waveform.querySelectorAll(".wave-bar");
+    waveBars.forEach((bar, index) => {
+      bar.style.animationDelay = `${index * 0.1}s`;
+    });
+  }
 }
 
 // Timeline animation for roadmap
 function animateTimelinePhases() {
-    const phases = document.querySelectorAll('.timeline-phase');
-    phases.forEach((phase, index) => {
-        setTimeout(() => {
-            phase.style.opacity = '1';
-            phase.style.transform = 'translateX(0)';
-        }, index * 200);
-    });
+  const phases = document.querySelectorAll(".timeline-phase");
+  phases.forEach((phase, index) => {
+    setTimeout(() => {
+      phase.style.opacity = "1";
+      phase.style.transform = "translateX(0)";
+    }, index * 200);
+  });
 }
 
 // Demo functionality
 function simulateCommand(type) {
-    const demoStatus = document.getElementById('demoStatus');
-    const demoResponse = document.getElementById('demoResponse');
-    const demoBalance = document.getElementById('demoBalance');
+  const demoStatus = document.getElementById("demoStatus");
+  const demoResponse = document.getElementById("demoResponse");
+  const demoBalance = document.getElementById("demoBalance");
 
-    const commands = {
-        balance: {
-            command: 'Check my balance',
-            response: 'Your balance is R1,250.50',
-            result: 'R1,250.50'
-        },
-        transfer: {
-            command: 'Send R100 to John',
-            response: 'Transfer completed successfully',
-            result: 'Transfer Complete ✓'
-        },
-        history: {
-            command: 'Show recent transactions',
-            response: 'Here are your recent transactions',
-            result: `<div style="font-size: 0.9rem; text-align: left;">
+  const commands = {
+    balance: {
+      command: "Check my balance",
+      response: "Your balance is R1,250.50",
+      result: "R1,250.50",
+    },
+    transfer: {
+      command: "Send R100 to John",
+      response: "Transfer completed successfully",
+      result: "Transfer Complete ✓",
+    },
+    history: {
+      command: "Show recent transactions",
+      response: "Here are your recent transactions",
+      result: `<div style="font-size: 0.9rem; text-align: left;">
                         <div>• Grocery Store - R150</div>
                         <div>• Fuel Station - R500</div>
                         <div>• Transfer from Mom - R200</div>
-                     </div>`
-        },
-        help: {
-            command: 'What can you do?',
-            response: 'I can help with balance, transfers, history, and more',
-            result: 'Available Commands: Balance, Transfer, History'
-        }
-    };
+                     </div>`,
+    },
+    help: {
+      command: "What can you do?",
+      response: "I can help with balance, transfers, history, and more",
+      result: "Available Commands: Balance, Transfer, History",
+    },
+  };
 
-    const cmd = commands[type];
-    if (!cmd) return;
+  const cmd = commands[type];
+  if (!cmd) return;
 
-    // Reset previous state
-    if (demoResponse) demoResponse.textContent = '';
-    if (demoBalance) demoBalance.innerHTML = '';
+  // Reset previous state
+  if (demoResponse) demoResponse.textContent = "";
+  if (demoBalance) demoBalance.innerHTML = "";
 
-    // Show listening state
-    if (demoStatus) demoStatus.textContent = 'Listening...';
+  // Show listening state
+  if (demoStatus) demoStatus.textContent = "Listening...";
 
-    // Simulate voice input
+  // Simulate voice input
+  setTimeout(() => {
+    if (demoStatus) demoStatus.textContent = `"${cmd.command}"`;
+
+    // Show processing
     setTimeout(() => {
-        if (demoStatus) demoStatus.textContent = `"${cmd.command}"`;
+      if (demoStatus) demoStatus.textContent = "Processing...";
 
-        // Show processing
+      // Show response
+      setTimeout(() => {
+        if (demoStatus) demoStatus.textContent = "Response:";
+        if (demoResponse) demoResponse.textContent = cmd.response;
+        if (demoBalance) demoBalance.innerHTML = cmd.result;
+
+        // Reset after delay
         setTimeout(() => {
-            if (demoStatus) demoStatus.textContent = 'Processing...';
-
-            // Show response
-            setTimeout(() => {
-                if (demoStatus) demoStatus.textContent = 'Response:';
-                if (demoResponse) demoResponse.textContent = cmd.response;
-                if (demoBalance) demoBalance.innerHTML = cmd.result;
-
-                // Reset after delay
-                setTimeout(() => {
-                    if (demoStatus) demoStatus.textContent = 'Ready to listen...';
-                    if (demoResponse) demoResponse.textContent = '';
-                    if (demoBalance) demoBalance.innerHTML = '';
-                }, 4000);
-            }, 1500);
-        }, 1000);
+          if (demoStatus) demoStatus.textContent = "Ready to listen...";
+          if (demoResponse) demoResponse.textContent = "";
+          if (demoBalance) demoBalance.innerHTML = "";
+        }, 4000);
+      }, 1500);
     }, 1000);
+  }, 1000);
 }
 
 // Auto-start animations
 function startAutoAnimations() {
-    // Start animations for the first slide
-    setTimeout(() => {
-        triggerSlideAnimations(1);
-    }, 500);
+  // Start animations for the first slide
+  setTimeout(() => {
+    triggerSlideAnimations(1);
+  }, 500);
+}
+
+// Create floating particle effect
+function createParticleEffect() {
+  const particleContainer = document.createElement("div");
+  particleContainer.className = "particle-container";
+  particleContainer.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
+    `;
+
+  document.body.appendChild(particleContainer);
+
+  // Create particles
+  for (let i = 0; i < 15; i++) {
+    createParticle(particleContainer);
+  }
+}
+
+function createParticle(container) {
+  const particle = document.createElement("div");
+  const size = Math.random() * 3 + 1;
+  const colors = ["#00d4ff", "#ff6b6b", "#4ecdc4", "#a8e6cf"];
+  const color = colors[Math.floor(Math.random() * colors.length)];
+
+  particle.style.cssText = `
+        position: absolute;
+        width: ${size}px;
+        height: ${size}px;
+        background: ${color};
+        border-radius: 50%;
+        opacity: 0.4;
+        animation: float ${Math.random() * 15 + 15}s linear infinite;
+        left: ${Math.random() * 100}%;
+        top: 100%;
+        box-shadow: 0 0 10px ${color};
+    `;
+
+  container.appendChild(particle);
+
+  // Remove particle after animation
+  setTimeout(() => {
+    if (particle.parentNode) {
+      particle.parentNode.removeChild(particle);
+      createParticle(container); // Create new particle
+    }
+  }, (Math.random() * 15 + 15) * 1000);
+}
+
+// Enhanced slide transitions
+function enhanceSlideTransitions() {
+  const style = document.createElement("style");
+  style.textContent = `
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.4;
+            }
+            90% {
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    `;
+  document.head.appendChild(style);
 }
 
 // Initialize timeline phases as hidden for animation
 function initializeTimelinePhases() {
-    const phases = document.querySelectorAll('.timeline-phase');
-    phases.forEach(phase => {
-        phase.style.opacity = '0';
-        phase.style.transform = 'translateX(-50px)';
-        phase.style.transition = 'all 0.6s ease';
-    });
+  const phases = document.querySelectorAll(".timeline-phase");
+  phases.forEach((phase) => {
+    phase.style.opacity = "0";
+    phase.style.transform = "translateX(-50px)";
+    phase.style.transition = "all 0.6s ease";
+  });
 }
 
 // Call initialization when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    initializeTimelinePhases();
+document.addEventListener("DOMContentLoaded", () => {
+  initializeTimelinePhases();
 });
 
 // Add click effects to buttons
-document.addEventListener('DOMContentLoaded', () => {
-    const buttons = document.querySelectorAll('.command-btn, .cta-btn, .nav-btn');
-    buttons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            // Add ripple effect
-            const ripple = document.createElement('span');
-            const rect = this.getBoundingClientRect();
-            const size = Math.max(rect.width, rect.height);
-            const x = e.clientX - rect.left - size / 2;
-            const y = e.clientY - rect.top - size / 2;
+document.addEventListener("DOMContentLoaded", () => {
+  const buttons = document.querySelectorAll(".command-btn, .cta-btn, .nav-btn");
+  buttons.forEach((button) => {
+    button.addEventListener("click", function (e) {
+      // Add ripple effect
+      const ripple = document.createElement("span");
+      const rect = this.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      const x = e.clientX - rect.left - size / 2;
+      const y = e.clientY - rect.top - size / 2;
 
-            ripple.style.cssText = `
+      ripple.style.cssText = `
                 position: absolute;
                 width: ${size}px;
                 height: ${size}px;
@@ -411,19 +511,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 pointer-events: none;
             `;
 
-            this.style.position = 'relative';
-            this.style.overflow = 'hidden';
-            this.appendChild(ripple);
+      this.style.position = "relative";
+      this.style.overflow = "hidden";
+      this.appendChild(ripple);
 
-            setTimeout(() => {
-                ripple.remove();
-            }, 600);
-        });
+      setTimeout(() => {
+        ripple.remove();
+      }, 600);
     });
+  });
 });
 
 // Add ripple animation CSS
-const rippleStyle = document.createElement('style');
+const rippleStyle = document.createElement("style");
 rippleStyle.textContent = `
     @keyframes ripple {
         to {
@@ -436,28 +536,28 @@ document.head.appendChild(rippleStyle);
 
 // Presentation mode detection
 function isPresentationMode() {
-    return document.fullscreenElement !== null;
+  return document.fullscreenElement !== null;
 }
 
 // Auto-advance slides (optional - can be enabled for demo mode)
 let autoAdvanceInterval;
 
 function startAutoAdvance(intervalMs = 10000) {
-    stopAutoAdvance();
-    autoAdvanceInterval = setInterval(() => {
-        if (currentSlide < totalSlides) {
-            nextSlide();
-        } else {
-            stopAutoAdvance();
-        }
-    }, intervalMs);
+  stopAutoAdvance();
+  autoAdvanceInterval = setInterval(() => {
+    if (currentSlide < totalSlides) {
+      nextSlide();
+    } else {
+      stopAutoAdvance();
+    }
+  }, intervalMs);
 }
 
 function stopAutoAdvance() {
-    if (autoAdvanceInterval) {
-        clearInterval(autoAdvanceInterval);
-        autoAdvanceInterval = null;
-    }
+  if (autoAdvanceInterval) {
+    clearInterval(autoAdvanceInterval);
+    autoAdvanceInterval = null;
+  }
 }
 
 // Uncomment to enable auto-advance in presentation mode
@@ -471,9 +571,9 @@ function stopAutoAdvance() {
 
 // Professional Loading Screen
 function showLoadingScreen() {
-    const loader = document.createElement('div');
-    loader.id = 'professional-loader';
-    loader.innerHTML = `
+  const loader = document.createElement("div");
+  loader.id = "professional-loader";
+  loader.innerHTML = `
         <div class="loader-content">
             <div class="loader-logo">
                 <svg viewBox="0 0 120 60" width="80" height="40">
@@ -502,8 +602,8 @@ function showLoadingScreen() {
         </div>
     `;
 
-    const loaderStyles = document.createElement('style');
-    loaderStyles.textContent = `
+  const loaderStyles = document.createElement("style");
+  loaderStyles.textContent = `
         #professional-loader {
             position: fixed;
             top: 0;
@@ -587,17 +687,17 @@ function showLoadingScreen() {
         }
     `;
 
-    document.head.appendChild(loaderStyles);
-    document.body.appendChild(loader);
+  document.head.appendChild(loaderStyles);
+  document.body.appendChild(loader);
 }
 
 function hideLoadingScreen() {
-    const loader = document.getElementById('professional-loader');
-    if (loader) {
-        loader.style.opacity = '0';
-        loader.style.transition = 'opacity 0.5s ease';
-        setTimeout(() => {
-            loader.remove();
-        }, 500);
-    }
+  const loader = document.getElementById("professional-loader");
+  if (loader) {
+    loader.style.opacity = "0";
+    loader.style.transition = "opacity 0.5s ease";
+    setTimeout(() => {
+      loader.remove();
+    }, 500);
+  }
 }
